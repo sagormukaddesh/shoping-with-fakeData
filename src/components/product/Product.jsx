@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 const Product = ({ product, handleAddToCart }) => {
     const { title, price, image, description, category } = product;
     return (
-        <div className="card card-compact w-96 border border-amber-500 bg-slate-100 shadow-xl">
+        <div className="card card-compact w-96 border border-amber-200 hover:border-amber-500 bg-slate-100 shadow-xl">
             <figure><img className='w-[200px]' src={image} alt="Shoes" /></figure>
 
             <div className="card-body">

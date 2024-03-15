@@ -4,6 +4,7 @@ import './App.css'
 import Bookmarks from './components/bookmarks/Bookmarks';
 import Header from './components/header/Header'
 import Products from './components/products/Products';
+import Swal from 'sweetalert2';
 
 function App() {
   const [carts, setCart] = useState([]);
@@ -13,10 +14,26 @@ function App() {
     const isExist = carts.find(p => p.id == product.id);
     if (!isExist) {
       setCart([...carts, product]);
-    }else{
-      alert('already in cart')
+    } else {
+      Swal.fire({
+        title: "Item Already in Cart!",
+        text: "Get back?",
+        icon: "error"
+      }); 
     }
   };
+
+  const handleRemove = (id) => {
+    const remaining = carts.filter(p => p.id !== id);
+    if (remaining) {
+      Swal.fire({
+        title: "Want To Delete?",
+        text: "Delete Permanently?",
+        icon: "question"
+      });  
+    }
+    setCart(remaining)
+  }
 
   return (
     <>
@@ -27,7 +44,8 @@ function App() {
             handleAddToCart={handleAddToCart}
           ></Products></div>
           <div className='col-span-3'> <Bookmarks
-          carts={carts}
+            carts={carts}
+            handleRemove={handleRemove}
           ></Bookmarks></div>
         </div>
       </div>

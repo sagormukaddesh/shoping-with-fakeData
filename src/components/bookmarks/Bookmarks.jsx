@@ -1,6 +1,6 @@
 import Cart from "../cart/Cart";
 import PropTypes from 'prop-types'
-const Bookmarks = ({ carts }) => {
+const Bookmarks = ({ carts, handleRemove }) => {
 
     return (
         <div className=" md:mx-6">
@@ -11,6 +11,7 @@ const Bookmarks = ({ carts }) => {
                     carts.map((singleCart, idx) => <Cart
                         key={idx}
                         singleCart={singleCart}
+                        handleRemove={handleRemove}
 
                     ></Cart>)
                 }
@@ -19,6 +20,7 @@ const Bookmarks = ({ carts }) => {
     );
 };
 Bookmarks.propTypes = {
-    carts: PropTypes.array.isRequired
+    carts: PropTypes.array.isRequired,
+    handleRemove: PropTypes.func
 }
 export default Bookmarks;

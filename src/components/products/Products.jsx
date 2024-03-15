@@ -3,7 +3,7 @@ import { useState } from "react";
 import Product from "../product/Product";
 import PropTypes from 'prop-types';
 
-const Products = ({ handleAddToCart }) => {
+const Products = ({ handleAddToCart}) => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         fetch(`fakeData.json`)
@@ -27,6 +27,6 @@ const Products = ({ handleAddToCart }) => {
     );
 };
 Products.propTypes = {
-    handleAddToCart: PropTypes.func.isRequired
+    handleAddToCart: PropTypes.func.isRequired,
 }
 export default Products;
